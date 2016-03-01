@@ -10,7 +10,7 @@ var gulp        = require('gulp'),
 */
 
 gulp.task('minify-js', function() {
-    return gulp.src('dev/js/*.js')
+    return gulp.src('dev/js/main.js')
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js/'))

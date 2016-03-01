@@ -16,16 +16,16 @@ browserSync.create();
 gulp.task('inject-css-dev', ['sass'], function() {
   return gulp.src('./dev/index.html')
     .pipe(inject(
-        gulp.src('./dev/css/*.css', {read: false}),
+        gulp.src('./dev/css/main.css', {read: false}),
         {ignorePath: 'dev', addRootSlash: false}))
     .pipe(gulp.dest('./dev'))
     .pipe(browserSync.stream());
 });
 
-gulp.task('inject-js-dev',['babelify'], function() {
+gulp.task('inject-js-dev', function() {
   return gulp.src('./dev/index.html')
     .pipe(inject(
-        gulp.src('./dev/js/*.js', {read: false}),
+        gulp.src('./dev/js/main.js', {read: false}),
         {ignorePath: 'dev', addRootSlash: false}))
     .pipe(gulp.dest('./dev'));
 });
@@ -59,7 +59,7 @@ gulp.task('dev', ['inject-css-dev', 'inject-js-dev'], function() {
       }
   });
 
-  gulp.watch('dev/css/*.scss', ['inject-css-dev']);
+  gulp.watch('dev/scss/*.scss', ['inject-css-dev']);
   gulp.watch('dev/js/*.js', ['inject-js-dev'], browserSync.reload);
   gulp.watch("dev/*.html").on('change', browserSync.reload);
 });

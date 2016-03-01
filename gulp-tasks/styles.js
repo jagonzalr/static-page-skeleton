@@ -10,7 +10,8 @@ var cleanCSS    = require('gulp-clean-css'),
 */
 
 gulp.task("sass", function () {
-  return gulp.src("src/main.scss")
+  console.log("sass");
+  return gulp.src("dev/scss/*.scss")
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(gulp.dest('dev/css/'));
 });
